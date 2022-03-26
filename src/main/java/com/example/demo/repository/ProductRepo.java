@@ -10,6 +10,6 @@ import java.math.BigInteger;
 
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long> {
-    @Query("SELECT p FROM Product p WHERE p.categoryTag.tag LIKE %?1% ORDER BY p.price DESC ,p.name ASC ")
+    @Query("SELECT p FROM Product p WHERE p.categoryTag.tag LIKE %?1% ORDER BY p.price DESC ,LOWER(p.name) ASC ")
     Iterable<Product> view(String tag);
 }
